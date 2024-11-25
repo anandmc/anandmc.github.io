@@ -1,0 +1,29 @@
+{
+  "name": "owl-app",
+  "version": "1.0.0",
+  "description": "git hub webpage runs on owl",
+  "homepage": "https://anandmc.github.io/owl-app",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx parcel src/index.html",
+    "build": "npx parcel build public/index.html --out-dir build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "owl-app"
+  },
+  "author": "ANAND MC",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.26.0",
+    "@babel/preset-env": "^7.26.0",
+    "@babel/preset-react": "^7.25.9",
+    "@odoo/owl": "^2.5.0",
+    "parcel-bundler": "^1.12.5",
+    "webpack": "^5.96.1",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.1.0"
+  }
+}
