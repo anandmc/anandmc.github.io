@@ -131,10 +131,25 @@
     width:100%;
     position: fixed;
     background: black;
-    height: 137px;
+    height: 220px;
     bottom: 0;
 }
 .key{
-    width:33px;
-    height:40px;
+    width: 36px;
+    align-items: center;
+    height: 50px;
+    display: inline-flex;
+    justify-content: center;
+}
+.keyEnter{
+    display: inline-flex;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
+}
+.keyBack{
+    display: inline-flex;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
 }
