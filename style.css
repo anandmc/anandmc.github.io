@@ -142,16 +142,19 @@
     height: 50px;
     display: inline-flex;
     justify-content: center;
+    cursor:pointer;
 }
 .keyEnter{
     display: inline-flex;
     height: 50px;
     justify-content: center;
     align-items: center;
+    cursor:pointer;
 }
 .keyBack{
     display: inline-flex;
     height: 50px;
     justify-content: center;
     align-items: center;
+    cursor:pointer;
 }
