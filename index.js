@@ -1,75 +1,120 @@
-const TARGET = 'BIKER' //use 5 letter word
-var word_rows = {
-        0:{'word':[],'status':'draft','length':5},
-        1:{'word':[],'status':'draft','length':5},
-        2:{'word':[],'status':'draft','length':5},
-        3:{'word':[],'status':'draft','length':5},
-        4:{'word':[],'status':'draft','length':5}
-    }
+document.addEventListener("DOMContentLoaded", () => {
 
-$(document).ready(function(){
-    $('.alert-success').hide();
-})
-function checkMatch(word){
-    var target_array = TARGET.split('');
-    var correctIndex = [];
-    var WrongIndex = [];
-    target_array.forEach((char, index) => {
-        const matchingIndex = word.indexOf(char); // Find the index of the character in array1
-        if (matchingIndex !== -1) {
-            if (matchingIndex === index) {
-                correctIndex.push(matchingIndex);
-            } else {
-                WrongIndex.push(matchingIndex);
+    /* Typing */
+    document.querySelectorAll(".typing").forEach(el => {
+        const text = el.textContent;
+        el.textContent = "";
+        let i = 0;
+
+        function type() {
+            if (i < text.length) {
+                el.textContent += text[i];
+                i++;
+                setTimeout(type, 0);
             }
         }
+        type();
     });
-    return [correctIndex,WrongIndex];
-}
-function clickKey(val){
-    var self = this;
-    if(val == 'back'){
-        var removed = false
-        for(i=4;i>=0;i--){
-            var row = word_rows[i]; // get word row reversed by for loop
-            if(row.word.length > 0 && !removed && row.status != 'done'){
-                row.word.pop(); // pop last value from array
-                $($('.wordRow'+String(i)).children()[row.word.length]).children().html('') // remove from html
-                removed = true;
-                if(row.word.length == 0){
-                    row.status = 'draft' // make draft state of the row
-                }
-            }
-        }
-    }
-    else if(val == 'enter'){
 
+    const sun = document.querySelector(".sun");
+    const moon = document.querySelector(".moon");
+
+    /* Stars */
+    const stars = [];
+    for (let i = 0; i < 150; i++) {
+        const star = document.createElement("div");
+        star.classList.add("star");
+        star.style.left = Math.random() * 100 + "vw";
+        star.style.top = Math.random() * 100 + "vh";
+        document.body.appendChild(star);
+        stars.push(star);
     }
-    else{
-        var added = false
-        $.each(word_rows, function(key, value){
-            if(value.word.length < 5 && !added){
-                value.word.push(val); // add value to the array
-                value.status = 'pending'; // state to pending
-                $($('.wordRow'+String(key)).children()[value.word.length -1]).children().html(val) // add to html
-                added = true;
-                if(value.word.length == 5){
-                    var indexes = self.checkMatch(value.word)
-                    correctIndex = indexes[0]
-                    wrongIndex = indexes[1]
-                    correctIndex.forEach((i, index) => {
-                        $($('.wordRow'+String(key)).children()[i]).children().addClass('bg-success')// add to html
-                    });
-                    wrongIndex.forEach((i, index) => {
-                        console.log(i, index)
-                        $($('.wordRow'+String(key)).children()[i]).children().addClass('bg-warning')// add to html
-                    });
-                    value.status = 'done'
-                    if(correctIndex.length == 5){
-                        $('.alert-success').show(1000);
-                    }
-                }
-            }
+
+    /* Planes */
+    const planes = [];
+    for (let i = 0; i < 5; i++) {
+        const plane = document.createElement("div");
+        plane.classList.add("plane");
+        plane.innerHTML = "✈";
+        plane.style.top = (10 + Math.random() * 40) + "%";
+        plane.style.animationDuration = (8 + Math.random() * 10) + "s";
+        document.body.appendChild(plane);
+        planes.push(plane);
+    }
+
+    function updateScene() {
+        const scrollY = window.scrollY;
+        const maxScroll = document.body.scrollHeight - window.innerHeight;
+        const progress = Math.min(scrollY / maxScroll, 1);
+
+        /* 🎨 Background */
+        const r = 255 - (255 - 60) * progress;
+        const g = 255 - (255 - 62) * progress;
+        const b = 255 - (255 - 75) * progress;
+        document.body.style.background = `rgb(${r}, ${g}, ${b})`;
+        /* 📝 Text color transition */
+        const textColor = progress > 0.5 ? "#ffffff" : "#111111";
+        document.querySelectorAll(".section").forEach(sec => {
+            sec.style.color = textColor;
+        });
+
+        const arcHeight = 12;
+        const baseTop = 25;
+
+        /* ☀️ SUN (0 → 50%) */
+        if (progress <= 0.5) {
+            const p = progress / 0.5;
+
+            const curve = Math.sin(p * Math.PI);
+
+            const x = p * 80;
+            sun.style.left = `${x}%`;
+            sun.style.top = `${baseTop - curve * arcHeight}%`;
+
+            sun.style.opacity = 1;
+        } else {
+            sun.style.opacity = 0;
+        }
+
+        /* 🌙 MOON (50% → 100%) */
+        if (progress > 0.5) {
+            const p = (progress - 0.5) / 0.5;
+
+            const curve = Math.sin(p * Math.PI);
+
+            const x = p * 80;
+            moon.style.left = `${x}%`;
+            moon.style.top = `${baseTop - curve * arcHeight}%`;
+
+            moon.style.opacity = p;
+        } else {
+            moon.style.opacity = 0;
+        }
+
+        /* ⭐ Stars */
+        stars.forEach(star => {
+            star.style.opacity = progress;
+        });
+
+        /* ✈️ Planes */
+        planes.forEach(plane => {
+            plane.style.opacity = 1 - progress;
         });
     }
-}
+
+    let ticking = false;
+
+    function onScroll() {
+        if (!ticking) {
+            requestAnimationFrame(() => {
+                updateScene();
+                ticking = false;
+            });
+            ticking = true;
+        }
+    }
+
+    window.addEventListener("scroll", onScroll);
+    updateScene();
+
+});

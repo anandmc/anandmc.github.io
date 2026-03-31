@@ -3,101 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wordlee</title>
-    <!-- Bootstrap CSS -->
-    <link href="style.css" rel="stylesheet">
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <title>AnandMC</title>
 
-    <!-- Optional Theme (for older versions of Bootstrap) -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap-theme.min.css" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="./index.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
-<div class="container poppins-regular">
-    <h1 class="text-center poppins-medium mt-5">Wordlee</h1>
-    <h5 class="text-center poppins-medium mt-3">Find The word in 5 guess</h5>
-    <div class="text-center">
-        <table class="table table-borderless tableWord ml-auto mr-auto">
-            <tr class="wordRow0">
-                <td class="p-1"><span class="box 1"></span></td>
-                <td class="p-1"><span class="box 2"></span></td>
-                <td class="p-1"><span class="box 3"></span></td>
-                <td class="p-1"><span class="box 4"></span></td>
-                <td class="p-1"><span class="box 5"></span></td>
-            </tr>
-            <tr class="wordRow1">
-                <td class="p-1"><span class="box"></span></td>
-                <td class="p-1"><span class="box"></span></td>
-                <td class="p-1"><span class="box"></span></td>
-                <td class="p-1"><span class="box"></span></td>
-                <td class="p-1"><span class="box"></span></td>
-            </tr>
-            <tr class="wordRow2">
-                <td class="p-1"><span class="box"></span></td>
-                <td class="p-1"><span class="box"></span></td>
-                <td class="p-1"><span class="box"></span></td>
-                <td class="p-1"><span class="box"></span></td>
-                <td class="p-1"><span class="box"></span></td>
-            </tr>
-            <tr class="wordRow3">
-                <td class="p-1"><span class="box"></span></td>
-                <td class="p-1"><span class="box"></span></td>
-                <td class="p-1"><span class="box"></span></td>
-                <td class="p-1"><span class="box"></span></td>
-                <td class="p-1"><span class="box"></span></td>
-            </tr>
-            <tr class="wordRow4">
-                <td class="p-1"><span class="box"></span></td>
-                <td class="p-1"><span class="box"></span></td>
-                <td class="p-1"><span class="box"></span></td>
-                <td class="p-1"><span class="box"></span></td>
-                <td class="p-1"><span class="box"></span></td>
-            </tr>
-        </table>
-    </div>
-    <div class="alert alert-success">
-      <strong>Congratulations..</strong> You Have found The word...Come back Tomorrow
-    </div>
-</div>
-<div class="keyboard text-center">
-    <div class="mt-3">
-        <span class="=btn btn-secondary p-2 key" onclick="clickKey('Q')">Q</span>
-        <span class="=btn btn-secondary p-2 key" onclick="clickKey('W')">W</span>
-        <span class="=btn btn-secondary p-2 key" onclick="clickKey('E')">E</span>
-        <span class="=btn btn-secondary p-2 key" onclick="clickKey('R')">R</span>
-        <span class="=btn btn-secondary p-2 key" onclick="clickKey('T')">T</span>
-        <span class="=btn btn-secondary p-2 key" onclick="clickKey('Y')">Y</span>
-        <span class="=btn btn-secondary p-2 key" onclick="clickKey('U')">U</span>
-        <span class="=btn btn-secondary p-2 key" onclick="clickKey('I')">I</span>
-        <span class="=btn btn-secondary p-2 key" onclick="clickKey('O')">O</span>
-        <span class="=btn btn-secondary p-2 key" onclick="clickKey('P')">P</span>
-    </div>
-    <div class="mt-3">
-        <span class="=btn btn-secondary p-2 key" onclick="clickKey('A')">A</span>
-        <span class="=btn btn-secondary p-2 key" onclick="clickKey('S')">S</span>
-        <span class="=btn btn-secondary p-2 key" onclick="clickKey('D')">D</span>
-        <span class="=btn btn-secondary p-2 key" onclick="clickKey('F')">F</span>
-        <span class="=btn btn-secondary p-2 key" onclick="clickKey('G')">G</span>
-        <span class="=btn btn-secondary p-2 key" onclick="clickKey('H')">H</span>
-        <span class="=btn btn-secondary p-2 key" onclick="clickKey('J')">J</span>
-        <span class="=btn btn-secondary p-2 key" onclick="clickKey('K')">K</span>
-        <span class="=btn btn-secondary p-2 key" onclick="clickKey('L')">L</span>
 
-    </div>
-    <div class="mt-3">
-        <span class="=btn btn-danger p-2 keyBack" onclick="clickKey('back')">delete</span>
-        <span class="=btn btn-secondary p-2 key" onclick="clickKey('Z')">Z</span>
-        <span class="=btn btn-secondary p-2 key" onclick="clickKey('X')">X</span>
-        <span class="=btn btn-secondary p-2 key" onclick="clickKey('C')">C</span>
-        <span class="=btn btn-secondary p-2 key" onclick="clickKey('V')">V</span>
-        <span class="=btn btn-secondary p-2 key" onclick="clickKey('B')">B</span>
-        <span class="=btn btn-secondary p-2 key" onclick="clickKey('N')">N</span>
-        <span class="=btn btn-secondary p-2 key" onclick="clickKey('M')">M</span>
-<!--        <span class="=btn btn-success p-2 keyEnter" onclick="clickKey('enter')">Enter</span>-->
+<body>
+
+<div class="sun"></div>
+<div class="moon"></div>
+
+<div class="content">
+    <section class="section">
+        <h2 class="">Hi,</h2>
+        <p class="typing">I don't know why I am writing this, May be I am stupid enough to do things like this. one
+            thing is sure that I am afraid to give this to you. I don't know why.And one more thing, please read the
+            whole.
+        </p>
+        <p class="typing">Well I know that I have been a stupid boyfriend all along. I believe I never gave you what you
+            deserve.
+            Allways finding problems and making issues, I know that , I have been careless all the time. May be I am
+            raised as single boy , never had to put up my self to anyone. I don't know these are all like assumption
+            coming up in my head why I am like this :[. May be these are all true. And some anger issues. I m pretty
+            clear I have that :).i knew that if we are having a problem we will try to controll it , I know that's
+            everybody does. I want to do the same.But no idea why the heck I am being triggered fast :(, I know I hurted
+            you like anything. But the truth is I never wanted to do such things to you. I never wanted to hurt you. But
+            unfortunately it happend and I am sorry for that :(.</p>
+    </section>
+
+    <section class="section">
+        <p class="typing">I know this is awkward to do things like this. I don't have an option. I know that I have hid
+            somthing in the begining of our relation, cause I never wanted to tell that to anyone. And when I am looking
+            back at it I feel like somebody used me and after purpose throwed me in a place of a toy. thats why I kept
+            it hid. Later on I understood that things should be spoken up.and one more thing is like I don't know how to
+            explain all those but I m sure that, that's not the only thing I want from a partner, I know thats hurted
+            you more than anything, I didn't know how to confess or speek up those things at that time. </p>
+    </section>
+
+    <section class="section">
+        <p class="typing">I missed you a lot. For the past one year I have been trying to text you call you but I am
+            afraid to do that .every single day. I don't know why I am like this. If I am keep talking I may become a
+            disturbance that you will hate :]. I don't want you to hate me. I don't even know what is there to fix. Or I
+            don't know whats not there. One thing I m sure is my mind is completely messed up.i always wanted to give it
+            a shot. I want to be understandable, that I never did before. Once again sorry that I have hurted you very
+            bad. Please give it a try if posible , I want to try my best. I want to do the things I was not able to do.i
+            am not making it any more cringe. But please.
+            I don't know how you are going to take this. I don't even know people will do sent msg like this.
+            One more thing I still have the same thing in me it never lost ♡. I don't even know that you are gonna reply
+            me to this, but I wanted to talk things over. If possible, I don't know your stand :/</p>
+    </section>
+
+    <div style="height:10vh;">
+        <div style="text-align:center; margin-top:40px;">
+            <a href="https://wa.me/916282938262?text=🙂"
+               target="_blank"
+               class="whatsapp-btn">
+                More
+            </a>
+        </div>
     </div>
 </div>
+
+<script src="index.js"></script>
 </body>
 </html>
