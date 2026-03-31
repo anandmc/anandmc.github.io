@@ -1,5 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
-
+    // Force reload once without cache
+    if (!sessionStorage.getItem("forceReload")) {
+        sessionStorage.setItem("forceReload", "true");
+        window.location.reload();
+    }
     /* Typing */
     document.querySelectorAll(".typing").forEach(el => {
         const text = el.textContent;
